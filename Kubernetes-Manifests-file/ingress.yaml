@@ -11,8 +11,8 @@ metadata:
 spec:
   ingressClassName: alb
   rules:
-    - host: devops.space
-      http: # Removed 
+    - host: devops91.space
+      http: 
         paths:
           - path: /api
             pathType: Prefix
