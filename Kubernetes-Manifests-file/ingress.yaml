@@ -11,7 +11,7 @@ metadata:
 spec:
   ingressClassName: alb
   rules:
-    - host: k8s-threetie-mainlb-ca4520df41-1340386241.us-east-1.elb.amazonaws.com/
+    - host: devops.space
       http: # Removed 
         paths:
           - path: /api
