@@ -1,5 +1,5 @@
 
-# `Ericsson Task
+# Ericsson Task
 
 
 
@@ -15,8 +15,26 @@ You can choose any open source testing tool of your choice. For Ex : selenium, p
 
 <p>Approach:</p>
 
-# Tool Selection:
-<p> <b>Playwright Automation Tool</b> Playwright was chosen for its cross-browser compatibility and robust automation capabilities. The test aimed to verify the end-to-end flight search functionality and price comparison on the Skyscanner website.</p>
+### Task 2: Deploy a Sample Application
+- The sample application is a todo application developed using React for front end, Node.js for Backend ad mongodb as database
+- Now from the work station clone the repository using the command
+```Shell
+https://github.com/munagalasandeep99/ericcson-task.git
+cd ericcson/Kubernetes-Manifests-file
+kubectl create -f . 
+```
+```Shell
+cd Frontend
+kubectl create -f . 
+```
+```Shell
+cd ../Database
+kubectl create -f . 
+```
+```Shell
+cd ../Backend
+kubectl create -f . 
+```
 
 # Logic and Test Case:
 <p>Navigation and Interaction:</p>
