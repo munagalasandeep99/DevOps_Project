@@ -30,6 +30,8 @@ kubectl create -f .
 ## deliverables
 <h>Application code and kubernetes manifests</h>: the applcation code is present in Application_code file and Kubernetes-Manifests-file repectively above
 
+<h>
+
 <h>video</h> href="https://drive.google.com/file/d/130-2luUJOdhsTmaNA7UzeeI31t-fUfyh/view?usp=sharing"
 
 ### Task 3:Monitoring with Prometheus &amp; Grafana.
@@ -82,7 +84,12 @@ kubectl get svc
 ```
 note down the loadbalncer dns for Prometheus and graphana
 
-now you can access prometheus and graphana ui using loadbancer dns you get
+now you can access prometheus and graphana ui using loadbancer dns you get.
+
+## deliverables
+- The congig files are present in prometheus and grafana folder of the repository
+  ![prometheus](https://github.com/user-attachments/assets/6477bc1f-b69e-4cd1-8d14-674ebbf1ff7b)
+
 
 # Task 4
 - file: monitor.sh and prometheus-query.py are present in scripts folder above.
