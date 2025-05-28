@@ -132,128 +132,8 @@ Memory Usage: 0.147461 GB
     "pod": "kube-proxy-44wpn",
     "cpu_usage_cores": 0.00024203313184795584,
     "memory_usage_bytes": 26836992.0
-  },
-  {
-    "namespace": "kube-system",
-    "pod": "metrics-server-75bf97fcc9-vkmtf",
-    "cpu_usage_cores": 0.0022688706563227506,
-    "memory_usage_bytes": 21487616.0
-  },
-  {
-    "namespace": "kube-system",
-    "pod": "aws-node-rrxjq",
-    "cpu_usage_cores": 0.002551196003781295,
-    "memory_usage_bytes": 80793600.0
-  },
-  {
-    "namespace": "kube-system",
-    "pod": "ebs-csi-controller-6b7d79c8cf-k599r",
-    "cpu_usage_cores": 0.0002469042338457355,
-    "memory_usage_bytes": 10289152.0
-  },
-  {
-    "namespace": "kube-system",
-    "pod": "ebs-csi-node-6vs2g",
-    "cpu_usage_cores": 0.00018655863190880268,
-    "memory_usage_bytes": 5328896.0
-  },
-  {
-    "namespace": "three-tier",
-    "pod": "frontend-5c75bc9c59-7pg96",
-    "cpu_usage_cores": 0.00019587020448713708,
-    "memory_usage_bytes": 258326528.0
-  },
-  {
-    "namespace": "default",
-    "pod": "prometheus-prometheus-node-exporter-6lfbh",
-    "cpu_usage_cores": 0.000425646221971775,
-    "memory_usage_bytes": 10043392.0
-  },
-  {
-    "namespace": "argocd",
-    "pod": "argocd-server-7bc9d78cf4-92jkb",
-    "cpu_usage_cores": 0.0006789189149755883,
-    "memory_usage_bytes": 74289152.0
-  },
-  {
-    "namespace": "kube-system",
-    "pod": "aws-load-balancer-controller-7dcc74f48b-w2g5f",
-    "cpu_usage_cores": 0.001982111098708069,
-    "memory_usage_bytes": 50307072.0
-  },
-  {
-    "namespace": "default",
-    "pod": "prometheus-prometheus-pushgateway-9847c5479-djxcl",
-    "cpu_usage_cores": 0.00010108051842580082,
-    "memory_usage_bytes": 9052160.0
-  },
-  {
-    "namespace": "argocd",
-    "pod": "argocd-notifications-controller-5fff689764-s79s2",
-    "cpu_usage_cores": 0.00021564080389414037,
-    "memory_usage_bytes": 17547264.0
-  },
-  {
-    "namespace": "three-tier",
-    "pod": "mongodb-59797b688c-kz5xz",
-    "cpu_usage_cores": 0.0035796032718287863,
-    "memory_usage_bytes": 172761088.0
-  },
-  {
-    "namespace": "argocd",
-    "pod": "argocd-applicationset-controller-749957bcc9-jkn66",
-    "cpu_usage_cores": 0.0005078682096669877,
-    "memory_usage_bytes": 19415040.0
-  },
-  {
-    "namespace": "three-tier",
-    "pod": "api-65fd846f99-5vjgz",
-    "cpu_usage_cores": 0.0005916648923300266,
-    "memory_usage_bytes": 35373056.0
-  },
-  {
-    "namespace": "kube-system",
-    "pod": "ebs-csi-node-8qsnl",
-    "cpu_usage_cores": 0.00021192605438230094,
-    "memory_usage_bytes": 5079040.0
-  },
-  {
-    "namespace": "kube-system",
-    "pod": "coredns-54d6f577c6-f9d5b",
-    "cpu_usage_cores": 0.0010618448224665486,
-    "memory_usage_bytes": 21196800.0
-  },
-  {
-    "namespace": "kube-system",
-    "pod": "aws-node-9rxc7",
-    "cpu_usage_cores": 0.0027198859814959696,
-    "memory_usage_bytes": 68820992.0
-  },
-  {
-    "namespace": "kube-system",
-    "pod": "kube-proxy-hvxbn",
-    "cpu_usage_cores": 0.0002079354558953648,
-    "memory_usage_bytes": 19542016.0
-  },
-  {
-    "namespace": "kube-system",
-    "pod": "ebs-csi-controller-6b7d79c8cf-wrxvm",
-    "cpu_usage_cores": 0.00024185240553704308,
-    "memory_usage_bytes": 9453568.0
-  },
-  {
-    "namespace": "default",
-    "pod": "prometheus-server-564cfc9b9f-jpvwz",
-    "cpu_usage_cores": 7.099864458842471e-05,
-    "memory_usage_bytes": 8798208.0
-  },
-  {
-    "namespace": "default",
-    "pod": "grafana-7c96b5b9cc-rcpkb",
-    "cpu_usage_cores": 0.003038098635281149,
-    "memory_usage_bytes": 127254528.0
   }
-]
+  
 ```
 -specific-pod.py results
 ```bash
@@ -300,7 +180,8 @@ export ARGO_PWD='kubectl -n argocd get secret argocd-initial-admin-secret -o jso
 echo $ARGO_PWD
 ```
 - Enter the username as admin and password in argoCD and click on SIGN IN.
-![image](https://github.com/user-attachments/assets/895de472-b8c2-4d1c-a5f4-568342e59ae4)
+![image](https://github.com/user-attachments/assets/71fdda62-b615-4154-967d-e41db8d8b21a)
+
 
 - now add repositoy details to argocd repositories using CONNECT REPO USING HTTPS
 ![image](https://github.com/user-attachments/assets/727c39ee-0a92-44fe-9cf6-0bc803b70bc2)
@@ -308,6 +189,44 @@ echo $ARGO_PWD
 - now , create applications for frontend, backend, database and ingress, follow the snippets
 ![image](https://github.com/user-attachments/assets/f5050178-a432-4200-890b-d92124a1456b)
 ![image](https://github.com/user-attachments/assets/0afbaa49-20bd-4195-ae65-1a1c8aafa9d6)
+![image](https://github.com/user-attachments/assets/78317c04-defb-4f1d-a67b-815525ffe895)
+
+- now the CI/CD part is completed.
+
+<b>deliverables</b>
+
+- the cicd pipe line configuration is in Jenkins-Pipeline-Code folder, it has two jenkins files, one for frontend and one for backend.
+- Docker files for front end is present in Application-Code/frontend and backend in Application-Code/Backend folders
+- the kubernetes manifest files are present in the folder Kubernetes-Manifests-file
+- screen shots of successful deployment
+![image](https://github.com/user-attachments/assets/2d363586-0abb-4673-99b6-e248ae757327)
+![image](https://github.com/user-attachments/assets/ba55df78-7d28-41fd-b9b4-dc160dfa15ff)
+![image](https://github.com/user-attachments/assets/78317c04-defb-4f1d-a67b-815525ffe895)
+
+# Descriptions:
+<h> How pipeline is triggered </h>
+- The pipeline runs automatically whenever a commit is pushed to the GitHub repository (https://github.com/munagalasandeep99/ericcson-task.git). This is set up using a GitHub webhook, which sends a notification to Jenkins whenever code is pushed to the master branch (or the configured branch). This ensures that any new code changes trigger the pipeline immediately. Additionally, you can manually start the pipeline through the Jenkins web interface, which is useful for rerunning builds or testing specific changes.
+
+<h> how it talks to kubernetes cluster </h>
+CI Process
+The Continuous Integration (CI) phase is handled by the jenkins, the pipeline is triggered when a commit is made, in the pipeline it
+
+Builds a Docker image from the application code.
+Pushes the image to AWS Elastic Container Registry (ECR) using secure AWS credentials.
+Updates the Kubernetes manifest file in the Git repository with the new Docker image tag.
+
+CD Process (ArgoCD)
+
+The Continuous Deployment (CD) phase is handled by ArgoCD. ArgoCD continuously monitors the GitHub repository for changes to the manifest files. When Jenkins updates the deployment.yaml with a new image tag, ArgoCD detects this change and applies the updated configuration to the Kubernetes cluster
+
+<h> how monitoring is verified </h>
+
+images of prometheus and grafana working
+![image](https://github.com/user-attachments/assets/b0bdfa90-c77e-40f9-9830-951470861ae4)
+![grafana2](https://github.com/user-attachments/assets/4a080cea-98e2-445e-b6c2-5688f11d4520)
+
+
+
 
 
 
