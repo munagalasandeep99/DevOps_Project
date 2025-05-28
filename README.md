@@ -110,7 +110,7 @@ now you can access prometheus and graphana ui using loadbancer dns you get
 <b>deliverables</b>
 - it are placed in scriptin results folder
 - monitor.sh results
-  ```bash
+```bash
 Pod: mongodb-59797b688c-kz5xz
 CPU Usage: 0.004 cores
 Memory Usage: 0.147461 GB
