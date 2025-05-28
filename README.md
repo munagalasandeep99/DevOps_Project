@@ -40,3 +40,55 @@ kubectl create -f .
 <h>Application code and kubernetes manifests</h>: the applcation code is present in Application_code file and Kubernetes-Manifests-file repectively above
 
 <h>video</h> href="https://drive.google.com/file/d/130-2luUJOdhsTmaNA7UzeeI31t-fUfyh/view?usp=sharing"
+
+### Task 3:Monitoring with Prometheus &amp; Grafana.
+## Step 1: Add Helm Repositories
+
+```bash
+# Add Prometheus Community Helm repo
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+
+# Add Grafana Helm repo
+helm repo add grafana https://grafana.github.io/helm-charts
+
+# Update Helm repos
+helm repo update
+```
+## Step 2: Install Prometheus and Grafana
+```bash
+# Install Prometheus
+helm install prometheus prometheus-community/prometheus
+
+# Install Grafana
+helm install grafana grafana/grafana
+```
+## Step 3: Verify Services
+```bash
+kubectl get svc
+```
+look for prometheus-server and graphana
+## Step 4: Expose Prometheus and Grafana (Change Service Type)
+```bash
+kubectl edit svc prometheus-server
+```
+modify the yaml
+```yaml
+spec:
+  type: LoadBalancer
+```
+edit Graphana service
+```bash
+kubectl edit svc grafana
+```
+modify
+```yaml
+spec:
+  type: LoadBalancer
+```
+### step 5:Get External Access URLs
+```bash
+kubectl get svc
+```
+note down the loadbalncer dns for Prometheus and graphana
+
+
