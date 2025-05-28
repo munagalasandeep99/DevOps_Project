@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Define variables for the pod and namespace
-POD_NAME="your-pod-name" # <--- IMPORTANT: Replace with your pod's name
-NAMESPACE="default"      # <--- IMPORTANT: Replace if your pod is in a different namespace
+POD_NAME="your-pod-name" #  Replace with your pod's name
+NAMESPACE="default"      #  Replace if your pod is in a different namespace
 
 # Define threshold values
 CPU_THRESHOLD=0.5       # in cores
