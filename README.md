@@ -1,7 +1,34 @@
 
 # Ericsson Task
 
+## Kubernetes architecture
 
+I had to set up a Kubernetes cluster using Amazon EKS with two nodes.
+
+## Architecture
+I have created an Amazon EKS (Elastic Kubernetes Service) cluster in the us-east-1 region, distributed across two Availability Zones to ensure high availability and data reliability.
+
+To support this architecture, I configured:
+
+- Two public subnets (one in each Availability Zone)
+
+- Two private subnets (one in each Availability Zone)
+
+Networking and Placement:
+The EKS control plane is deployed in the public subnets. This allows easy access for cluster management and interaction using kubectl, the AWS CLI, and other tools.
+
+The worker nodes (node groups) are deployed in the private subnets to enhance security by preventing direct exposure to the internet. These nodes interact with the outside world only through NAT gateways or load balancers as needed.
+
+Add-ons Installed:
+To extend the functionality of the EKS cluster and ensure smooth operations, I have installed the following EKS-managed add-ons:
+
+Amazon EBS CSI Driver – for dynamic provisioning and management of EBS volumes used by Kubernetes pods.
+
+CoreDNS – to provide internal DNS resolution for service discovery within the Kubernetes cluster.
+
+AWS Load Balancer Controller – to provision and manage AWS Application Load Balancers (ALB) and Network Load Balancers (NLB) for Kubernetes services.
+
+Amazon VPC CNI Plugin – for efficient pod networking, allowing each pod to get an IP address from the VPC CIDR range.
 
 
 
@@ -98,6 +125,8 @@ helm install aws-load-balancer-controller eks/aws-load-balancer-controller -n ku
 
 kubectl get deployment -n kube-system aws-load-balancer-controller
 ```
+
+- now eks setup is completed
 ### Task 2: Deploy a Sample Application
 - The sample application is a todo application developed using React for front end, Node.js for Backend ad mongodb as database
 - Now from the work station clone the repository using the command
@@ -178,6 +207,7 @@ spec:
                   number: 3000
 ```
 <h>video</h> href="https://drive.google.com/file/d/130-2luUJOdhsTmaNA7UzeeI31t-fUfyh/view?usp=sharing"
+
 
 
 
