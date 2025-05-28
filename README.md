@@ -93,4 +93,19 @@ note down the loadbalncer dns for Prometheus and graphana
 
 now you can access prometheus and graphana ui using loadbancer dns you get
 
+# Task 4
+- file: monitor.sh and prometheus-query.py are present in scripts folder above.
+- Monitor.sh - checks the memory and cpu usage of the pod and alerts us by printing messages ,before running the script change the pod name and name space , if wanted change the thresholds.
+  ```shell
+  chmod +x monitor.sh
+  ./monitor.sh
+  ```
+  - file prometheus-query.py - displays all the pods their cpu usage and memory usage and stores in a json file .
+  - file specific-pod.py - displays the current cpu and memory usage and stores in a json file, before running you need to mention the pod name and namespace name
+ ```shell
+  pip install requests
+  pip prometheus-query.py
+  pip specific-pod.py
+  ```
+
 
