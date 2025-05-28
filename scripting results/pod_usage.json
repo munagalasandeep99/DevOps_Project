@@ -1,0 +1,188 @@
+[
+  {
+    "namespace": "default",
+    "pod": "prometheus-alertmanager-0",
+    "cpu_usage_cores": 0.000957721265878057,
+    "memory_usage_bytes": 15421440.0
+  },
+  {
+    "namespace": "three-tier",
+    "pod": "api-65fd846f99-8s4wv",
+    "cpu_usage_cores": 0.0006128168941130256,
+    "memory_usage_bytes": 35827712.0
+  },
+  {
+    "namespace": "default",
+    "pod": "prometheus-kube-state-metrics-99d7bdbfc-chtz5",
+    "cpu_usage_cores": 0.0016261690670860288,
+    "memory_usage_bytes": 15069184.0
+  },
+  {
+    "namespace": "argocd",
+    "pod": "argocd-repo-server-794b8857ff-np7j2",
+    "cpu_usage_cores": 0.001296069863994264,
+    "memory_usage_bytes": 35303424.0
+  },
+  {
+    "namespace": "default",
+    "pod": "prometheus-prometheus-node-exporter-8r2jx",
+    "cpu_usage_cores": 0.00047293169165241134,
+    "memory_usage_bytes": 8749056.0
+  },
+  {
+    "namespace": "argocd",
+    "pod": "argocd-application-controller-0",
+    "cpu_usage_cores": 0.004864007663188089,
+    "memory_usage_bytes": 57536512.0
+  },
+  {
+    "namespace": "argocd",
+    "pod": "argocd-redis-fb66447b8-lnx65",
+    "cpu_usage_cores": 0.001334236900103448,
+    "memory_usage_bytes": 3141632.0
+  },
+  {
+    "namespace": "argocd",
+    "pod": "argocd-dex-server-868bf8bc97-5xkzz",
+    "cpu_usage_cores": 0.00012163810177587849,
+    "memory_usage_bytes": 17244160.0
+  },
+  {
+    "namespace": "kube-system",
+    "pod": "aws-load-balancer-controller-7dcc74f48b-q268p",
+    "cpu_usage_cores": 0.0011800355742716193,
+    "memory_usage_bytes": 36171776.0
+  },
+  {
+    "namespace": "kube-system",
+    "pod": "coredns-54d6f577c6-5bmth",
+    "cpu_usage_cores": 0.001052272332949247,
+    "memory_usage_bytes": 25677824.0
+  },
+  {
+    "namespace": "kube-system",
+    "pod": "kube-proxy-44wpn",
+    "cpu_usage_cores": 0.00021814331745827846,
+    "memory_usage_bytes": 26836992.0
+  },
+  {
+    "namespace": "kube-system",
+    "pod": "metrics-server-75bf97fcc9-vkmtf",
+    "cpu_usage_cores": 0.002420025971128002,
+    "memory_usage_bytes": 21487616.0
+  },
+  {
+    "namespace": "kube-system",
+    "pod": "aws-node-rrxjq",
+    "cpu_usage_cores": 0.0026877360499112505,
+    "memory_usage_bytes": 80875520.0
+  },
+  {
+    "namespace": "kube-system",
+    "pod": "ebs-csi-controller-6b7d79c8cf-k599r",
+    "cpu_usage_cores": 0.00025852415649452426,
+    "memory_usage_bytes": 9424896.0
+  },
+  {
+    "namespace": "kube-system",
+    "pod": "ebs-csi-node-6vs2g",
+    "cpu_usage_cores": 0.00012913625407194934,
+    "memory_usage_bytes": 5328896.0
+  },
+  {
+    "namespace": "three-tier",
+    "pod": "frontend-5c75bc9c59-7pg96",
+    "cpu_usage_cores": 0.00019162917502652923,
+    "memory_usage_bytes": 258494464.0
+  },
+  {
+    "namespace": "default",
+    "pod": "prometheus-prometheus-node-exporter-6lfbh",
+    "cpu_usage_cores": 0.00040673200134530205,
+    "memory_usage_bytes": 9490432.0
+  },
+  {
+    "namespace": "argocd",
+    "pod": "argocd-server-7bc9d78cf4-92jkb",
+    "cpu_usage_cores": 0.0006652214645667382,
+    "memory_usage_bytes": 74289152.0
+  },
+  {
+    "namespace": "kube-system",
+    "pod": "aws-load-balancer-controller-7dcc74f48b-w2g5f",
+    "cpu_usage_cores": 0.002025499066743938,
+    "memory_usage_bytes": 50384896.0
+  },
+  {
+    "namespace": "default",
+    "pod": "prometheus-prometheus-pushgateway-9847c5479-djxcl",
+    "cpu_usage_cores": 9.458670665799013e-05,
+    "memory_usage_bytes": 9060352.0
+  },
+  {
+    "namespace": "argocd",
+    "pod": "argocd-notifications-controller-5fff689764-s79s2",
+    "cpu_usage_cores": 0.0001711007131217691,
+    "memory_usage_bytes": 17547264.0
+  },
+  {
+    "namespace": "three-tier",
+    "pod": "mongodb-59797b688c-kz5xz",
+    "cpu_usage_cores": 0.003148312106990717,
+    "memory_usage_bytes": 172765184.0
+  },
+  {
+    "namespace": "argocd",
+    "pod": "argocd-applicationset-controller-749957bcc9-jkn66",
+    "cpu_usage_cores": 0.0004955315951483246,
+    "memory_usage_bytes": 19415040.0
+  },
+  {
+    "namespace": "three-tier",
+    "pod": "api-65fd846f99-5vjgz",
+    "cpu_usage_cores": 0.0005049580225123238,
+    "memory_usage_bytes": 35061760.0
+  },
+  {
+    "namespace": "kube-system",
+    "pod": "ebs-csi-node-8qsnl",
+    "cpu_usage_cores": 0.00018383010696349774,
+    "memory_usage_bytes": 5079040.0
+  },
+  {
+    "namespace": "kube-system",
+    "pod": "coredns-54d6f577c6-f9d5b",
+    "cpu_usage_cores": 0.0011019904281974312,
+    "memory_usage_bytes": 22106112.0
+  },
+  {
+    "namespace": "kube-system",
+    "pod": "aws-node-9rxc7",
+    "cpu_usage_cores": 0.002713589285037621,
+    "memory_usage_bytes": 68886528.0
+  },
+  {
+    "namespace": "kube-system",
+    "pod": "kube-proxy-hvxbn",
+    "cpu_usage_cores": 0.00016100571111110184,
+    "memory_usage_bytes": 19542016.0
+  },
+  {
+    "namespace": "kube-system",
+    "pod": "ebs-csi-controller-6b7d79c8cf-wrxvm",
+    "cpu_usage_cores": 0.0002511754800700117,
+    "memory_usage_bytes": 9457664.0
+  },
+  {
+    "namespace": "default",
+    "pod": "prometheus-server-564cfc9b9f-jpvwz",
+    "cpu_usage_cores": 6.89952550465216e-05,
+    "memory_usage_bytes": 8802304.0
+  },
+  {
+    "namespace": "default",
+    "pod": "grafana-7c96b5b9cc-rcpkb",
+    "cpu_usage_cores": 0.002872597740441678,
+    "memory_usage_bytes": 127397888.0
+  }
+]
