@@ -4,16 +4,7 @@
 
 
 ### Task 1: Build a Kubernetes Cluster.
-- Open www.skyscanner.net
-- Give origin as "Stockholm" and destination as "Everywhere" (Överallt in Swedish)
-- Choose travel dates 22 Dec 2023 and return date 06 Jan 2024 and 1 adult as passenger.
-- Search for flights
-- Click on the first entry and see the lowest price shown there is same as the lowest price shown when clicked on the link.
-- For ex : if it shows 500 SEK for Gothenburg as cheapest as first link, when clicked on the link it should show same 500 SEK as cheapest. If it shows different price, then the test case should be failed. Otherwise it should show as passed.
 
-You can choose any open source testing tool of your choice. For Ex : selenium, playwright, webdriverIO etc
-
-<p>Approach:</p>
 
 ### Task 2: Deploy a Sample Application
 - The sample application is a todo application developed using React for front end, Node.js for Backend ad mongodb as database
@@ -273,3 +264,49 @@ Memory Usage: 0.147461 GB
   "memory_usage_bytes": 127459328.0
 }
 ```
+
+# Task 5
+
+For CICD  i used jenkins and Argocd
+ # Install & Configure ArgoCD
+- We will be deploying our application on a three-tier namespace. To do that, we will create a three-tier namespace on EKS
+```shell
+kubectl create namespace argocd
+```
+- Now install argocd using this command
+```shell
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/v2.4.7/manifests/install.yaml
+```
+- now expose argocd via load balancer
+```shell
+kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
+```
+- get the load balencer dns
+```shell
+kubectl get svc argocd-server -n argocd
+```
+![image](https://github.com/user-attachments/assets/27e91fcb-ebb8-4196-87b8-0bc1c1fce1ed)
+
+- To access the argoCD, copy the LoadBalancer DNS and hit on your favorite browser.
+
+![image](https://github.com/user-attachments/assets/1c08b6bb-7ce5-4860-b147-27b7474bb4c5)
+
+- collect the argocd password by performing this command
+```shell
+sudo apt install jq -y
+export ARGOCD_SERVER='kubectl get svc argocd-server -n argocd -o json | jq - raw-output '.status.loadBalancer.ingress[0].hostname''
+export ARGO_PWD='kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d'
+echo $ARGO_PWD
+```
+- Enter the username as admin and password in argoCD and click on SIGN IN.
+
+- now add repositoy details to argocd repositories using CONNECT REPO USING HTTPS
+![image](https://github.com/user-attachments/assets/727c39ee-0a92-44fe-9cf6-0bc803b70bc2)
+
+- now , create applications for frontend, backend, database and ingress, follow the snippets
+![image](https://github.com/user-attachments/assets/f5050178-a432-4200-890b-d92124a1456b)
+![image](https://github.com/user-attachments/assets/0afbaa49-20bd-4195-ae65-1a1c8aafa9d6)
+
+
+
