@@ -300,6 +300,7 @@ export ARGO_PWD='kubectl -n argocd get secret argocd-initial-admin-secret -o jso
 echo $ARGO_PWD
 ```
 - Enter the username as admin and password in argoCD and click on SIGN IN.
+![image](https://github.com/user-attachments/assets/895de472-b8c2-4d1c-a5f4-568342e59ae4)
 
 - now add repositoy details to argocd repositories using CONNECT REPO USING HTTPS
 ![image](https://github.com/user-attachments/assets/727c39ee-0a92-44fe-9cf6-0bc803b70bc2)
