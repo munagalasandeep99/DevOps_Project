@@ -89,6 +89,26 @@ now you can access prometheus and graphana ui using loadbancer dns you get.
 ## deliverables
 - The congig files are present in prometheus and grafana folder of the repository
   ![prometheus](https://github.com/user-attachments/assets/6477bc1f-b69e-4cd1-8d14-674ebbf1ff7b)
+  ![grafana](https://github.com/user-attachments/assets/8e563102-1132-4466-b168-2d944dd7165a)
+  ![grafana2](https://github.com/user-attachments/assets/6d38f664-ef9b-4cc4-a65c-51ae793c2adf)
+
+description of metrics being monitored
+ Pod Status Metrics
+- **kube_pod_status_phase**: Tracks pod lifecycle phase (e.g., Running, Failed). Shows pod health and state distribution.
+- **kube_pod_container_status_restarts_total**: Counts container restarts in pods. Indicates pod stability issues.
+- **kubelet_running_pod_count**: Counts running pods on nodes with role `.*node.*`. Monitors node workload.
+
+ Pod CPU Usage Metrics
+- **container_cpu_usage_seconds_total**: Measures CPU time used by containers (in seconds or millicores). Tracks actual CPU usage.
+- **kube_pod_container_resource_requests{resource="cpu"}**: Minimum CPU requested by containers for scheduling.
+- **kube_pod_container_resource_limits{resource="cpu"}**: Maximum CPU allowed for containers, enforced by Kubernetes.
+
+ Pod Memory Usage Metrics
+- **container_memory_working_set_bytes**: Measures active memory usage by containers. Tracks actual memory consumption.
+- **kube_pod_container_resource_requests{resource="memory"}**: Minimum memory requested by containers for scheduling.
+- **kube_pod_container_resource_limits{resource="memory"}**: Maximum memory allowed for containers, enforced by Kubernetes.
+
+
 
 
 # Task 4
