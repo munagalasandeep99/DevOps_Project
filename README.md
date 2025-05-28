@@ -3,7 +3,8 @@
 
 ## Kubernetes architecture
 
-I had to set up a Kubernetes cluster using Amazon EKS with two nodes.
+I have set up a Kubernetes cluster using Amazon EKS with two nodes.
+![image](https://github.com/user-attachments/assets/c3e51097-6d43-4874-8929-283b77bd3e91)
 
 ## Architecture
 I have created an Amazon EKS (Elastic Kubernetes Service) cluster in the us-east-1 region, distributed across two Availability Zones to ensure high availability and data reliability.
