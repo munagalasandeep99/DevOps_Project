@@ -216,7 +216,8 @@ NAME      CLASS   HOSTS           ADDRESS                                       
 mainlb    alb                  k8s-mainlb-threetie-abcdefgh123456-1234567890.us-west-2.elb.amazonaws.com   80      5m
 
 ```
-# video href="https://drive.google.com/file/d/130-2luUJOdhsTmaNA7UzeeI31t-fUfyh/view?usp=sharing"
+- use the address and paste it in browser you can access frontend and perform crud operations
+## video href="https://drive.google.com/file/d/130-2luUJOdhsTmaNA7UzeeI31t-fUfyh/view?usp=sharing"
 
 
 
