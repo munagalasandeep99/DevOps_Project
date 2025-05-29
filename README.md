@@ -133,7 +133,7 @@ kubectl get deployment -n kube-system aws-load-balancer-controller
 - Now from the work station clone the repository using the command
 ```Shell
 https://github.com/munagalasandeep99/ericcson-task.git
-cd ericcson/Kubernetes-Manifests-file
+cd ericcson/manifest-files
 kubectl create -f . 
 ```
 ```Shell
