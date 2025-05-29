@@ -364,6 +364,31 @@ Memory Usage: 0.147461 GB
 # Task 5
 
 For CICD  i used jenkins and Argocd
+# configure jenkins
+- copy the public IP of your Server and paste it on your favorite browser with an 8080 port
+![image](https://github.com/user-attachments/assets/56cdf836-08b8-4b7c-ae8f-f06305811568)
+- click on install suggested plugins
+![image](https://github.com/user-attachments/assets/e9851a84-cca9-4098-92cc-a42fc5853e75)
+- after installing the plugins, continue as admin
+![image](https://github.com/user-attachments/assets/0e924ca2-c63d-43cf-a768-c7382a8809fd)
+- start jenkins
+![image](https://github.com/user-attachments/assets/e3f0d36b-3286-4246-a7ef-da0a176cd9ab)
+- now go back to you server and configure aws
+  ![image](https://github.com/user-attachments/assets/2846e699-a594-44fc-b4f3-06821a153f1a)
+- Go to Manage Jenkins,Click on Plugins
+![image](https://github.com/user-attachments/assets/d16bf6a1-71e3-4ad9-8074-d9627ed73742)
+- now go to avalabil plugins and install this plugins
+```
+Docker
+Docker Commons
+Docker Pipeline
+Docker API
+docker-build-step
+nodejs
+aws-pipeline
+```
+- now add creditionals  in Dashboard -> Manage Jenkins -> System -> global credentials, like github creentials,aws credentials, which are needed
+- now build pipelines named frontend and backend and paste the jenkin files present in Jenkins-Pipeline-Code
  # Install & Configure ArgoCD
 - We will be deploying our application on a three-tier namespace. To do that, we will create a three-tier namespace on EKS
 ```shell
