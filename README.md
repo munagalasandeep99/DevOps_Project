@@ -130,7 +130,7 @@ kubectl get deployment -n kube-system aws-load-balancer-controller
 - now eks setup is completed
 ### Task 2: Deploy a Sample Application
 - The sample application is a todo application developed using React for front end, Node.js for Backend ad mongodb as database
-- Now from the work station clone the repository using the command
+- Now from the work station,ec2 instance clone the repository using the command
 ```Shell
 https://github.com/munagalasandeep99/ericcson-task.git
 cd ericcson/manifest-files
