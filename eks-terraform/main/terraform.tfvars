@@ -1,7 +1,7 @@
 #  Common variable
 ENV          = "prod"
 REGION       = "us-east-1"
-PROJECT_NAME = "eks"
+PROJECT_NAME = "Three-Tier-K8s-EKS-Cluster"
 
 #  VPC variables
 VPC_CIDR         = "192.168.0.0/16"
