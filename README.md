@@ -99,6 +99,47 @@ sudo apt install terraform -y
 sudo snap install helm --classic
 
 ```
+- you can create either using eksctl or the terraform code in the git repo
+# using eksctl
+
+- configure to aws
+![image](https://github.com/user-attachments/assets/87df9c28-bfc6-4088-9e80-769d8b305d5e)
+- run this command
+```shell
+eksctl create cluster --name Three-Tier-K8s-EKS-Cluster --region us-east-1 --node-type t2.medium --nodes-min 2 --nodes-max 2
+aws eks update-kubeconfig --region us-east-1 --name Three-Tier-K8s-EKS-Cluster
+```
+![image](https://github.com/user-attachments/assets/65d574ef-c3d4-4a55-a57d-047dc4c24600)
+- Now, we will configure the Load Balancer on our EKS because our application will have an ingress controller.
+```shell
+curl -O https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.11.0/docs/install/iam_policy.json
+```
+- Create the IAM policy using the below command
+```shell
+aws iam create-policy \
+    --policy-name AWSLoadBalancerControllerIAMPolicy \
+    --policy-document file://iam_policy.json
+```
+- Create OIDC Provider
+```shell
+eksctl utils associate-iam-oidc-provider --region=us-east-1 --cluster=Three-Tier-K8s-EKS-Cluster --approve
+```
+- Create a Service Account by using below command and replace your account ID with your one
+```shell
+eksctl create iamserviceaccount --cluster=Three-Tier-K8s-EKS-Cluster --namespace=kube-system --name=aws-load-balancer-controller --role-name AmazonEKSLoadBalancerControllerRole --attach-policy-arn=arn:aws:iam::<your_account_id>:policy/AWSLoadBalancerControllerIAMPolicy --approve --region=us-east-1
+```
+![image](https://github.com/user-attachments/assets/5dcd8202-259c-45ae-9557-6937a816825f)
+
+- Run the below command to deploy the AWS Load Balancer Controller
+```shell
+sudo snap install helm --classic
+helm repo add eks https://aws.github.io/eks-charts
+helm repo update eks
+helm install aws-load-balancer-controller eks/aws-load-balancer-controller -n kube-system --set clusterName=Three-Tier-K8s-EKS-Cluster --set serviceAccount.create=false --set serviceAccount.name=aws-load-balancer-controller
+
+```
+-now  the eks cluster is ready of deployment
+
 ```shell
 git clone https://github.com/munagalasandeep99/ericcson-task.git
 cd ericcson-task/eks-terraform/main
