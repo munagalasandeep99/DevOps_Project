@@ -138,8 +138,8 @@ helm repo update eks
 helm install aws-load-balancer-controller eks/aws-load-balancer-controller -n kube-system --set clusterName=Three-Tier-K8s-EKS-Cluster --set serviceAccount.create=false --set serviceAccount.name=aws-load-balancer-controller
 
 ```
--now  the eks cluster is ready of deployment
-
+- now  the eks cluster is ready of deployment
+# using terraform
 ```shell
 git clone https://github.com/munagalasandeep99/ericcson-task.git
 cd ericcson-task/eks-terraform/main
