@@ -82,7 +82,19 @@ module "IAM_EBS_CSI" {
   EBS_CSI_DRIVER_SA_NAME                = var.EBS_CSI_DRIVER_SA_NAME
 }
 
-
+/*Add commentMore actions
+#   Deploy EFS CSI Driver
+module "IAM_EFS_CSI" {
+  depends_on                            = [module.IAM_VPC_CNI]
+  source                                = "../module/tools/EFS-IRSA"
+  ENV                                   = var.ENVAdd commentMore actions
+  CLUSTER_ID                            = module.EKS.CLUSTER_ID
+  EKS_OIDC_CONNECT_PROVIDER_ARN         = module.EKS.EKS_OIDC_CONNECT_PROVIDER_ARN
+  EKS_OIDC_CONNECT_PROVIDER_ARN_EXTRACT = module.EKS.EKS_OIDC_CONNECT_PROVIDER_ARN_EXTRACT
+  ROLE_EFS_CSI_DRIVER                   = var.ROLE_EFS_CSI_DRIVER
+  EFS_CSI_DRIVER_NAMESPACE              = var.EFS_CSI_DRIVER_NAMESPACE
+  EFS_CSI_DRIVER_SA_NAME                = var.EFS_CSI_DRIVER_SA_NAME
+}
 
 #   Deploy AWS Load Balancer Controller
 module "IAM_LBC" {
