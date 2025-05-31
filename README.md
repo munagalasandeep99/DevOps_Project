@@ -173,6 +173,7 @@ kubectl get deployment -n kube-system aws-load-balancer-controller
 - The sample application is a todo application developed using React for front end, Node.js for Backend ad mongodb as database
 - Now from the work station,ec2 instance clone the repository using the command
 ```Shell
+kubectl create namespace three-tier
 https://github.com/munagalasandeep99/ericcson-task.git
 cd ericcson/manifest-files
 kubectl create -f . 
