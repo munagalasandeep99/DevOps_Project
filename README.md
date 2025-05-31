@@ -35,7 +35,7 @@ Amazon VPC CNI Plugin – for efficient pod networking, allowing each pod to get
 
 ![image](https://github.com/user-attachments/assets/5eb6a0b4-e06e-4304-a3c3-f8181abec54e) 
 
-Kubernetes Control Plane
+<B>Kubernetes Control Plane</B>
 The control plane is the brain of a Kubernetes cluster. It manages the overall cluster, makes global decisions (like scheduling), and detects/responds to cluster events. Key components include:
 
 API Server: Exposes the Kubernetes API; it's the main entry point for users and tools.
