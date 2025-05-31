@@ -71,7 +71,7 @@ Step-by-step process:
 
 - The Controller Manager creates and monitors the Pod.
 
-- The selected Node receives the Pod specification.
+- The selected Worker Node receives the Pod specification.
 
 - The Kubelet on that Node pulls the nginx image and starts the container inside a Pod.
 
