@@ -36,25 +36,44 @@ Amazon VPC CNI Plugin – for efficient pod networking, allowing each pod to get
 ![image](https://github.com/user-attachments/assets/5eb6a0b4-e06e-4304-a3c3-f8181abec54e) 
 
 <B>Kubernetes Control Plane</B>
+
 The control plane is the brain of a Kubernetes cluster. It manages the overall cluster, makes global decisions (like scheduling), and detects/responds to cluster events. Key components include:
 
-API Server: Exposes the Kubernetes API; it's the main entry point for users and tools.
+<B>API Server</B>: Exposes the Kubernetes API; it's the main entry point for users and tools.
 
-Scheduler: Decides which node a pod should run on based on resource availability and other constraints.
+<B>Scheduler</B>: Decides which node a pod should run on based on resource availability and other constraints.
 
-Controller Manager: Runs background controllers that handle tasks like node management and replication.
+<B>Controller Manager</B>: Runs background controllers that handle tasks like node management and replication.
 
-etcd: A key-value store used to persist cluster state and configuration.
+<B>etcd</B>: A key-value store used to persist cluster state and configuration.
 
-Kubernetes Worker Nodes
+<B>Kubernetes Worker Nodes</B>
 Worker nodes are the machines (VMs or physical servers) that run the actual application workloads (containers). Each node runs:
 
-kubelet: Ensures containers are running as defined in the pod specs.
+<B>kubelet</B>: Ensures containers are running as defined in the pod specs.
 
-kube-proxy: Handles network routing for services and pod communication.
+<B>kube-proxy</B>: Handles network routing for services and pod communication.
 
-Container runtime (e.g., containerd, Docker): Runs the containers.
+<B>Container runtime</B> (e.g., containerd, Docker): Runs the containers.
 
+<B>What Happens When You Run a Kubernetes Command </B>
+
+example command:
+```shell
+kubectl run myapp --image=nginx
+```
+
+Step-by-step process:
+
+- kubectl sends the request to the Kubernetes API Server.
+
+- The Scheduler selects an appropriate Worker Node to run the Pod.
+
+- The Controller Manager creates and monitors the Pod.
+
+- The selected Node receives the Pod specification.
+
+- The Kubelet on that Node pulls the nginx image and starts the container inside a Pod.
 
 
 
