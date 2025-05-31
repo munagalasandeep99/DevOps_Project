@@ -31,6 +31,32 @@ AWS Load Balancer Controller – to provision and manage AWS Application Load Ba
 
 Amazon VPC CNI Plugin – for efficient pod networking, allowing each pod to get an IP address from the VPC CIDR range.
 
+# kubernetes control plane and worker node.
+
+![image](https://github.com/user-attachments/assets/5eb6a0b4-e06e-4304-a3c3-f8181abec54e) 
+
+Kubernetes Control Plane
+The control plane is the brain of a Kubernetes cluster. It manages the overall cluster, makes global decisions (like scheduling), and detects/responds to cluster events. Key components include:
+
+API Server: Exposes the Kubernetes API; it's the main entry point for users and tools.
+
+Scheduler: Decides which node a pod should run on based on resource availability and other constraints.
+
+Controller Manager: Runs background controllers that handle tasks like node management and replication.
+
+etcd: A key-value store used to persist cluster state and configuration.
+
+Kubernetes Worker Nodes
+Worker nodes are the machines (VMs or physical servers) that run the actual application workloads (containers). Each node runs:
+
+kubelet: Ensures containers are running as defined in the pod specs.
+
+kube-proxy: Handles network routing for services and pod communication.
+
+Container runtime (e.g., containerd, Docker): Runs the containers.
+
+
+
 
 
 ### Task 1: Build a Kubernetes Cluster.
