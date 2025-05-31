@@ -32,49 +32,6 @@ resource "aws_eks_cluster" "cluster" {
 
 
 
-# Uncomment if you want PUBLIC NODEGROUP
-
-# resource "aws_eks_node_group" "public-nodegroup" {
-#   cluster_name    = aws_eks_cluster.cluster.name
-#   node_group_name = "${var.PROJECT_NAME}-eks-public-nodegroup"
-#   node_role_arn   = var.EKS_MAIN_NODEGROUP_ROLE_ARN
-#   subnet_ids      = [var.PUB_SUB_1_A_ID, var.PUB_SUB_2_B_ID]
-#   version         = var.CLUSTER_VERSION
-#   ami_type        = var.AMI_TYPE
-#   instance_types  = var.INSTANCE_TYPE
-#   capacity_type   = "ON_DEMAND"
-#   disk_size       = 20
-#   scaling_config {
-#     desired_size = 2
-#     max_size     = 4
-#     min_size     = 2
-#   }
-
-#   update_config {
-#     max_unavailable = 1
-#   }
-
-#   remote_access {
-#     ec2_ssh_key = var.SSH_KEY_TO_ACCESS_NODE
-#   }
-#   # Ensure that IAM Role permissions are created before and deleted after EKS Node Group handling.
-#   # Otherwise, EKS will not be able to properly delete EC2 Instances and Elastic Network Interfaces.
-#   # depends_on = [
-#   #   aws_iam_role_policy_attachment.example-AmazonEKSWorkerNodePolicy,
-#   #   aws_iam_role_policy_attachment.example-AmazonEKS_CNI_Policy,
-#   #   aws_iam_role_policy_attachment.example-AmazonEC2ContainerRegistryReadOnly,
-#   # ]
-#   tags = {
-#     Name = "${var.PROJECT_NAME}-eks-public-nodegroup"
-# #     env  = "${var.ENV}"
-#     # Cluster Autoscaler TAGS - CA needs below tags to identify and ADD the instances in ASG
-#     "k8s.io/cluster-autoscaler/enabled"                         = "any-value" // ANY VALUE IF OKAY
-#     "k8s.io/cluster-autoscaler/${aws_eks_cluster.cluster.name}" = "any-value" // ANY VALUE IF OKAY
-#   }
-# }
-
-
-
 resource "aws_eks_node_group" "private-nodegroup" {
   cluster_name    = aws_eks_cluster.cluster.name
   node_group_name = "${var.PROJECT_NAME}-eks-private-nodegroup"
