@@ -6,7 +6,7 @@ metadata:
   labels:
     role: frontend
     env: demo
-spec: 
+spec:
   replicas: 1
   strategy:
     type: RollingUpdate
@@ -14,19 +14,22 @@ spec:
       maxSurge: 1
       maxUnavailable: 25%
   selector:
-    matchLabels: 
+    matchLabels:
       role: frontend
   template:
     metadata:
       labels:
         role: frontend
-    spec: 
+    spec:
       containers:
       - name: frontend
         image: sandeepreddymunagala/ericsson:frontend
         imagePullPolicy: Always
         env:
           - name: REACT_APP_BACKEND_URL
-            value: "http://devops91.space/api/tasks"
+            valueFrom:
+              configMapKeyRef:
+                name: frontend-config 
+                key: REACT_APP_BACKEND_URL 
         ports:
         - containerPort: 3000
