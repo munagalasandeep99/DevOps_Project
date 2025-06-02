@@ -10,32 +10,10 @@ metadata:
 spec:
   ingressClassName: alb
   rules:
-    - host: devops91.space
-      http: 
+    - http: 
         paths:
           - path: /api
             pathType: Prefix
-            backend:
-              service:
-                name: api
-                port:
-                  number: 3500
-          - path: /healthz
-            pathType: Exact
-            backend:
-              service:
-                name: api
-                port:
-                  number: 3500
-          - path: /ready
-            pathType: Exact
-            backend:
-              service:
-                name: api
-                port:
-                  number: 3500
-          - path: /started
-            pathType: Exact
             backend:
               service:
                 name: api
