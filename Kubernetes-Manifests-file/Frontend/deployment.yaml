@@ -27,7 +27,7 @@ spec:
       containers:
       - name: frontend
         # Updated image to pull from your ECR repository
-        image: 116321083906.dkr.ecr.us-east-1.amazonaws.com/frontend:14
+        image: 116321083906.dkr.ecr.us-east-1.amazonaws.com/frontend:15
         imagePullPolicy: Always
         env:
           - name: REACT_APP_BACKEND_URL
