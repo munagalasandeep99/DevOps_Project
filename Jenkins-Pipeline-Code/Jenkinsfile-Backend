@@ -1,8 +1,6 @@
 pipeline {
     agent any 
-    tools {
-        nodejs 'nodejs'
-    }
+   
     environment  {
         AWS_ACCOUNT_ID = credentials('ACCOUNT_ID')
         AWS_ECR_REPO_NAME = credentials('ECR_REPO2')
