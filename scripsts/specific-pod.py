@@ -14,11 +14,10 @@ def query_prometheus(query):
 def get_pod_usage(pod_name, namespace=None):
     ns_filter = f'namespace="{namespace}",' if namespace else ''
     
-    # Query current CPU usage (instantaneous rate)
+
     cpu_query = f'rate(container_cpu_usage_seconds_total{{pod="{pod_name}",{ns_filter}image!=""}})'
     cpu_results = query_prometheus(cpu_query)
-    
-    # Query current memory usage
+ 
     mem_query = f'container_memory_usage_bytes{{pod="{pod_name}",{ns_filter}image!=""}}'
     mem_results = query_prometheus(mem_query)
     
