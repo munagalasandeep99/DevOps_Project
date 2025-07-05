@@ -4,4 +4,4 @@ metadata:
   name: frontend-config
   namespace: three-tier
 data:
-  REACT_APP_BACKEND_URL: "/api/tasks"
+  REACT_APP_BACKEND_URL: ""http://devops91.space/api/tasks"
