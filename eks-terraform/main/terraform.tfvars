@@ -12,7 +12,7 @@ PRI_SUB_4_B_CIDR = "192.168.192.0/18"
 
 #  EKS cluster variables
 CLUSTER_SVC_CIDR                = "10.20.0.0/16"
-CLUSTER_VERSION                 = "1.31"
+CLUSTER_VERSION                 = "1.29"
 CLUSTER_ENDPOINT_PRIVATE_ACCESS = false
 CLUSTER_ENDPOINT_PUBLIC_ACCESS  = true
 CLUSTER_ENDPOINT_ACCESS_CIDR    = ["0.0.0.0/0"]

@@ -57,6 +57,44 @@ resource "aws_iam_role_policy_attachment" "ebs-csi-policy-attachment" {
   policy_arn = aws_iam_policy.ebs-csi-policy.arn
 }
 
+/*
+
+There are 2 Ways to Deploy Driver
+
+# 🔸 Helm
+# 🔸 EKS Add-ons
+
+*/
+
+# 🔸 Helm
+# Lets install EBS CSI Driver through helm provider
+/*
+resource "helm_release" "helm-ebs-csi-driver" {
+  depends_on = [ aws_iam_role_policy_attachment.ebs-csi-policy-attachment  ]
+  name       = "aws-ebs-csi-driver"
+  repository = "https://kubernetes-sigs.github.io/aws-ebs-csi-driver"
+  chart      = "aws-ebs-csi-driver"
+  namespace  = var.EBS_CSI_DRIVER_NAMESPACE
+
+  set {
+    name  = "controller.serviceAccount.create"
+    value = "true"
+  }
+  set {
+    name  = "controller.serviceAccount.name"
+    value = var.EBS_CSI_DRIVER_SA_NAME
+  }
+  set {
+    name  = "controller.serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
+    value = "${aws_iam_role.ebs-csi-role.arn}"
+    # value = aws_iam_role.ebs-csi-role.arn
+  }
+}
+
+*/
+
+# 🔸 EKS Add-ons
+# Lets install EBS CSI Driver through AWS provider
 
 resource "aws_eks_addon" "aws-ebs-csi-driver" {
   cluster_name = var.CLUSTER_ID

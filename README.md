@@ -4,8 +4,7 @@
 ## Kubernetes architecture
 
 I have set up a Kubernetes cluster using Amazon EKS with two nodes.
-![image](https://github.com/user-attachments/assets/367c0183-f773-402f-b22a-45e4b052913a)
-
+![image](https://github.com/user-attachments/assets/c3e51097-6d43-4874-8929-283b77bd3e91)
 
 ## Architecture
 I have created an Amazon EKS (Elastic Kubernetes Service) cluster in the us-east-1 region, distributed across two Availability Zones to ensure high availability and data reliability.
@@ -31,51 +30,6 @@ CoreDNS – to provide internal DNS resolution for service discovery within the 
 AWS Load Balancer Controller – to provision and manage AWS Application Load Balancers (ALB) and Network Load Balancers (NLB) for Kubernetes services.
 
 Amazon VPC CNI Plugin – for efficient pod networking, allowing each pod to get an IP address from the VPC CIDR range.
-
-# kubernetes control plane and worker node.
-
-![image](https://github.com/user-attachments/assets/5eb6a0b4-e06e-4304-a3c3-f8181abec54e) 
-
-<B>Kubernetes Control Plane</B>
-
-The control plane is the brain of a Kubernetes cluster. It manages the overall cluster, makes global decisions (like scheduling), and detects/responds to cluster events. Key components include:
-
-<B>API Server</B>: Exposes the Kubernetes API; it's the main entry point for users and tools.
-
-<B>Scheduler</B>: Decides which node a pod should run on based on resource availability and other constraints.
-
-<B>Controller Manager</B>: Runs background controllers that handle tasks like node management and replication.
-
-<B>etcd</B>: A key-value store used to persist cluster state and configuration.
-
-<B>Kubernetes Worker Nodes</B>
-Worker nodes are the machines (VMs or physical servers) that run the actual application workloads (containers). Each node runs:
-
-<B>kubelet</B>: Ensures containers are running as defined in the pod specs.
-
-<B>kube-proxy</B>: Handles network routing for services and pod communication.
-
-<B>Container runtime</B> (e.g., containerd, Docker): Runs the containers.
-
-<B>What Happens When You Run a Kubernetes Command </B>
-
-example command:
-```shell
-kubectl run myapp --image=nginx
-```
-
-Step-by-step process:
-
-- kubectl sends the request to the Kubernetes API Server.
-
-- The Scheduler selects an appropriate Worker Node to run the Pod.
-
-- The Controller Manager creates and monitors the Pod.
-
-- The selected Worker Node receives the Pod specification.
-
-- The Kubelet on that Node pulls the nginx image and starts the container inside a Pod.
-
 
 
 
@@ -145,47 +99,6 @@ sudo apt install terraform -y
 sudo snap install helm --classic
 
 ```
-- you can create either using eksctl or the terraform code in the git repo
-# using eksctl
-
-- configure to aws
-![image](https://github.com/user-attachments/assets/87df9c28-bfc6-4088-9e80-769d8b305d5e)
-- run this command
-```shell
-eksctl create cluster --name Three-Tier-K8s-EKS-Cluster --region us-east-1 --node-type t2.medium --nodes-min 2 --nodes-max 2
-aws eks update-kubeconfig --region us-east-1 --name Three-Tier-K8s-EKS-Cluster
-```
-![image](https://github.com/user-attachments/assets/65d574ef-c3d4-4a55-a57d-047dc4c24600)
-- Now, we will configure the Load Balancer on our EKS because our application will have an ingress controller.
-```shell
-curl -O https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.11.0/docs/install/iam_policy.json
-```
-- Create the IAM policy using the below command
-```shell
-aws iam create-policy \
-    --policy-name AWSLoadBalancerControllerIAMPolicy \
-    --policy-document file://iam_policy.json
-```
-- Create OIDC Provider
-```shell
-eksctl utils associate-iam-oidc-provider --region=us-east-1 --cluster=Three-Tier-K8s-EKS-Cluster --approve
-```
-- Create a Service Account by using below command and replace your account ID with your one
-```shell
-eksctl create iamserviceaccount --cluster=Three-Tier-K8s-EKS-Cluster --namespace=kube-system --name=aws-load-balancer-controller --role-name AmazonEKSLoadBalancerControllerRole --attach-policy-arn=arn:aws:iam::<your_account_id>:policy/AWSLoadBalancerControllerIAMPolicy --approve --region=us-east-1
-```
-![image](https://github.com/user-attachments/assets/5dcd8202-259c-45ae-9557-6937a816825f)
-
-- Run the below command to deploy the AWS Load Balancer Controller
-```shell
-sudo snap install helm --classic
-helm repo add eks https://aws.github.io/eks-charts
-helm repo update eks
-helm install aws-load-balancer-controller eks/aws-load-balancer-controller -n kube-system --set clusterName=Three-Tier-K8s-EKS-Cluster --set serviceAccount.create=false --set serviceAccount.name=aws-load-balancer-controller
-
-```
-- now  the eks cluster is ready of deployment
-# using terraform
 ```shell
 git clone https://github.com/munagalasandeep99/ericcson-task.git
 cd ericcson-task/eks-terraform/main
@@ -195,7 +108,7 @@ terraform apply --auto-approve
 ```
 - now after running this you still need to run this
 ```shell
-curl -O https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.11.0/docs/install/iam_policy.json
+curl -O https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.5.4/docs/install/iam_policy.json
 
 aws iam create-policy --policy-name AWSLoadBalancerControllerIAMPolicy --policy-document file://iam_policy.json
 
@@ -217,11 +130,10 @@ kubectl get deployment -n kube-system aws-load-balancer-controller
 - now eks setup is completed
 ### Task 2: Deploy a Sample Application
 - The sample application is a todo application developed using React for front end, Node.js for Backend ad mongodb as database
-- Now from the work station,ec2 instance clone the repository using the command
+- Now from the work station clone the repository using the command
 ```Shell
-kubectl create namespace three-tier
 https://github.com/munagalasandeep99/ericcson-task.git
-cd ericcson/manifest-files
+cd ericcson/Kubernetes-Manifests-file
 kubectl create -f . 
 ```
 ```Shell
@@ -238,11 +150,10 @@ kubectl create -f .
 ```
 
 ## deliverables
-- Application code and kubernetes manifests:
-  the applcation code is present in Application_code file and manifest-files repectively in above repository
+<h>Application code and kubernetes manifests</h>: the applcation code is present in Application_code file and Kubernetes-Manifests-file repectively above
 
-- how to access the front end
-I have used domain to access the frontend which is mentioned in the ingress.yaml file, i hosted a domain in route 53, you can access just by using the domain name, if you donot want to use domain name then open the /manifest-files/ingress.yml file and remove the host part then you can access it via load balancer generated by ingress 
+<h> how to access the front end <h>
+I have used domain to access the frontend which is mentioned in the ingress.yaml file, i hosted a domain in route 53, you can access just by using the domain name, if you donot want to use domain name the open the /Kubernetes-Manifests-file/ingress.yml file in remove the host part then you can access it via load balancer generated by ingress 
 
 ```shell
 apiVersion: networking.k8s.io/v1
@@ -267,6 +178,27 @@ spec:
                 name: api
                 port:
                   number: 3500
+          - path: /healthz
+            pathType: Exact
+            backend:
+              service:
+                name: api
+                port:
+                  number: 3500
+          - path: /ready
+            pathType: Exact
+            backend:
+              service:
+                name: api
+                port:
+                  number: 3500
+          - path: /started
+            pathType: Exact
+            backend:
+              service:
+                name: api
+                port:
+                  number: 3500
           - path: /
             pathType: Prefix
             backend:
@@ -275,17 +207,7 @@ spec:
                 port:
                   number: 3000
 ```
-```shell
-kubectl get ingress mainlb -n three-tier
-```
-- from this you get loadbalancer
-```shell
-NAME      CLASS   HOSTS           ADDRESS                                                               PORTS   AGE
-mainlb    alb                  k8s-mainlb-threetie-abcdefgh123456-1234567890.us-west-2.elb.amazonaws.com   80      5m
-
-```
-- use the address and paste it in browser you can access frontend and perform crud operations
-## video href="https://drive.google.com/file/d/130-2luUJOdhsTmaNA7UzeeI31t-fUfyh/view?usp=sharing"
+<h>video</h> href="https://drive.google.com/file/d/130-2luUJOdhsTmaNA7UzeeI31t-fUfyh/view?usp=sharing"
 
 
 
@@ -432,31 +354,6 @@ Memory Usage: 0.147461 GB
 # Task 5
 
 For CICD  i used jenkins and Argocd
-# configure jenkins
-- copy the public IP of your Server and paste it on your favorite browser with an 8080 port
-![image](https://github.com/user-attachments/assets/56cdf836-08b8-4b7c-ae8f-f06305811568)
-- click on install suggested plugins
-![image](https://github.com/user-attachments/assets/e9851a84-cca9-4098-92cc-a42fc5853e75)
-- after installing the plugins, continue as admin
-![image](https://github.com/user-attachments/assets/0e924ca2-c63d-43cf-a768-c7382a8809fd)
-- start jenkins
-![image](https://github.com/user-attachments/assets/e3f0d36b-3286-4246-a7ef-da0a176cd9ab)
-- now go back to you server and configure aws
-  ![image](https://github.com/user-attachments/assets/2846e699-a594-44fc-b4f3-06821a153f1a)
-- Go to Manage Jenkins,Click on Plugins
-![image](https://github.com/user-attachments/assets/d16bf6a1-71e3-4ad9-8074-d9627ed73742)
-- now go to avalabil plugins and install this plugins
-```
-Docker
-Docker Commons
-Docker Pipeline
-Docker API
-docker-build-step
-nodejs
-aws-pipeline
-```
-- now add creditionals  in Dashboard -> Manage Jenkins -> System -> global credentials, like github creentials,aws credentials, which are needed
-- now build pipelines named frontend and backend and paste the jenkin files present in Jenkins-Pipeline-Code
  # Install & Configure ArgoCD
 - We will be deploying our application on a three-tier namespace. To do that, we will create a three-tier namespace on EKS
 ```shell
