@@ -301,8 +301,8 @@ description of metrics being monitored
   - file specific-pod.py - displays the current cpu and memory usage and stores in a json file, before running you need to mention the pod name and namespace name
  ```shell
   pip install requests
-  pip prometheus-query.py
-  pip specific-pod.py
+  python prometheus-query.py
+  python specific-pod.py
   ```
 <b>deliverables</b>
 - it are placed in scriptin results folder
