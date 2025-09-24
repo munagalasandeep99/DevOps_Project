@@ -5,6 +5,9 @@ on:
     branches:
       - master
       - main
+    paths:
+      - 'Application-Code/frontend/**'
+      - 'manifest-files/Frontend/**'
 
 jobs:
   build-and-deploy:
@@ -41,15 +44,14 @@ jobs:
         working-directory: ./manifest-files/Frontend
         env:
           DOCKERHUB_REPO: ${{ secrets.DOCKERHUB_USERNAME }}/frontend
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.email "sandeepreddymunagala@gmail.com"
           git config user.name "munagalasandeep99"
           yq eval ".spec.template.spec.containers[0].image = \"$DOCKERHUB_REPO:${{ github.run_number }}\"" -i deployment.yaml
           git add deployment.yaml
-          git commit -m "Update backend deployment image to version ${{ github.run_number }} [skip ci]"
-          git push origin master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          git commit -m "Update frontend deployment image to version ${{ github.run_number }} [skip ci]"
+          git push origin ${{ github.ref_name }}
 
       - name: Validate deployment file
         working-directory: ./manifest-files/Frontend
