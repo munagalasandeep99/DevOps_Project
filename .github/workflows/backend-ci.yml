@@ -1,0 +1,59 @@
+name: Backend CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - master
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        working-directory: ./Application-Code/backend
+        env:
+          DOCKERHUB_REPO: ${{ secrets.DOCKERHUB_USERNAME }}/backend
+        run: |
+          docker build -t $DOCKERHUB_REPO:${{ github.run_number }} .
+          docker push $DOCKERHUB_REPO:${{ github.run_number }}
+
+      - name: Install yq
+        run: |
+          sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
+          sudo chmod +x /usr/local/bin/yq
+
+      - name: Update Kubernetes deployment file
+        working-directory: ./manifest-files/Backend
+        env:
+          DOCKERHUB_REPO: ${{ secrets.DOCKERHUB_USERNAME }}/backend
+        run: |
+          git config user.email "sandeepreddymunagala@gmail.com"
+          git config user.name "munagalasandeep99"
+          yq eval ".spec.template.spec.containers[0].image = \"$DOCKERHUB_REPO:${{ github.run_number }}\"" -i deployment.yaml
+          git add deployment.yaml
+          git commit -m "Update backend deployment image to version ${{ github.run_number }} [skip ci]"
+          git push origin master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Validate deployment file
+        working-directory: ./manifest-files/Backend
+        env:
+          DOCKERHUB_REPO: ${{ secrets.DOCKERHUB_USERNAME }}/backend
+        run: |
+          grep "$DOCKERHUB_REPO:${{ github.run_number }}" deployment.yaml || exit 1
