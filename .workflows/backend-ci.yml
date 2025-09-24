@@ -32,6 +32,11 @@ jobs:
           docker build -t $DOCKERHUB_REPO:${{ github.run_number }} .
           docker push $DOCKERHUB_REPO:${{ github.run_number }}
 
+      - name: Install yq
+        run: |
+          sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
+          sudo chmod +x /usr/local/bin/yq
+
       - name: Update Kubernetes deployment file
         working-directory: ./manifest-files/Backend
         env:
@@ -39,9 +44,16 @@ jobs:
         run: |
           git config user.email "sandeepreddymunagala@gmail.com"
           git config user.name "munagalasandeep99"
-          sed -i "s|$DOCKERHUB_REPO:[0-9]*|$DOCKERHUB_REPO:${{ github.run_number }}|" deployment.yaml
+          yq eval ".spec.template.spec.containers[0].image = \"$DOCKERHUB_REPO:${{ github.run_number }}\"" -i deployment.yaml
           git add deployment.yaml
           git commit -m "Update backend deployment image to version ${{ github.run_number }} [skip ci]"
           git push origin master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Validate deployment file
+        working-directory: ./manifest-files/Backend
+        env:
+          DOCKERHUB_REPO: ${{ secrets.DOCKERHUB_USERNAME }}/backend
+        run: |
+          grep "$DOCKERHUB_REPO:${{ github.run_number }}" deployment.yaml || exit 1
