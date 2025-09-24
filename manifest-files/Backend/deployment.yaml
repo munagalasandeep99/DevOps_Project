@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: api
-        image: sandeepreddymunagala/ericsson:backend
+        image: sandeepreddymunagala9/backend:1
         imagePullPolicy: Always
         env:
           - name: MONGO_CONN_STR
