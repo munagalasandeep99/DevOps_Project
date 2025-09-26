@@ -1,5 +1,5 @@
 
-# Ericsson Task
+
 
 ## Kubernetes architecture
 
